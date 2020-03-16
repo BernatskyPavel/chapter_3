@@ -15,7 +15,7 @@ fn main() {
             .read_line(&mut action_index)
             .expect("Failed to read line");
 
-        let action_index: u32 = match action_index.trim().parse() {
+        let action_index: usize = match action_index.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
@@ -38,14 +38,14 @@ fn main() {
                 };
                 break regim_index;
             };
-            let temperature: f32 = loop {
+            let temperature: f64 = loop {
                 println!("Please input temperature:");
                 let mut temperature = String::new();
                 io::stdin()
                     .read_line(&mut temperature)
                     .expect("Failed to read line");
 
-                let temperature: f32 = match temperature.trim().parse() {
+                let temperature: f64 = match temperature.trim().parse() {
                     Ok(num) => num,
                     Err(_) => continue,
                 };
@@ -95,7 +95,7 @@ fn main() {
     }
 }
 
-fn temperatures_task(temperature: f32, regim: usize) -> f32 {
+fn temperatures_task(temperature: f64, regim: usize) -> f64 {
     if regim == 1 {
         5.0 / 9.0 * (temperature - 32.0)
     } else if regim == 2 {
